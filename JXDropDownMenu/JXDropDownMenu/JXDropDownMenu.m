@@ -444,7 +444,7 @@
         if (_dataSource && [_dataSource respondsToSelector:@selector(menu:columnsInColumns:)]) {
             CGFloat col = [_dataSource menu:self columnsInColumns:_currentSelectedMenudIndex];
             
-            contentHeight = itemsCount/col * kCollectionViewCellHeight;
+            contentHeight = ceil(itemsCount/col) * kCollectionViewCellHeight;
         }
         CGFloat CollectionViewHeight = contentHeight > _maxMenuContentHeight ? _maxMenuContentHeight : contentHeight;
         
