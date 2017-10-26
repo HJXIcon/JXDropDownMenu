@@ -279,10 +279,22 @@
     } else {
         _currentSelectedMenudIndex = tapIndex;
         [self.collectionView reloadData];
-    
-        [self animateIdicator:_indicators[tapIndex] background:self.backgroundView collectionView:self.collectionView title:_titles[tapIndex] forward:YES complecte:^{
-            self.show = YES;
+        
+        [self.indicators enumerateObjectsUsingBlock:^(UIImageView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if (idx == _currentSelectedMenudIndex) {
+                [self animateIdicator:obj background:self.backgroundView collectionView:self.collectionView title:_titles[tapIndex] forward:YES complecte:^{
+                    self.show = YES;
+                }];
+                
+                
+            }else{
+                /// 其他的箭头复位
+                [self animateIndicatorImageView:obj Forward:NO complete:nil];
+            }
         }];
+        
+        
     }
     
 }
@@ -394,21 +406,15 @@
         indicator.transform = CGAffineTransformIdentity;
     }
     
-    complete();
+    if (complete) {
+        
+        complete();
+    }
 }
 
 
 
 - (void)animateIdicator:(id)indicator background:(UIView *)background collectionView:(UICollectionView *)collectionView title:(CATextLayer *)title forward:(BOOL)forward complecte:(void(^)())complete{
-    
-    __block NSInteger selectItem;
-    NSArray *modelArray = self.models[_currentSelectedMenudIndex];
-    [modelArray enumerateObjectsUsingBlock:^(JXDropDownModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.isSelect) {
-            selectItem = idx;
-        }
-        
-    }];
     
     [self animateIndicator:indicator Forward:forward complete:^{
         [self animateBackGroundView:background show:forward complete:^{
