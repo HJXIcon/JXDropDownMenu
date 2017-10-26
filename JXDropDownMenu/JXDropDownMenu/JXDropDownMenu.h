@@ -70,6 +70,8 @@
 @property (nonatomic, weak) id<JXDropDownMenuDataSource> dataSource;
 @property (nonatomic, weak) id<JXDropDownMenuDelegate> delegate;
 
+- (void)reloadData;
+
 @end
 
 

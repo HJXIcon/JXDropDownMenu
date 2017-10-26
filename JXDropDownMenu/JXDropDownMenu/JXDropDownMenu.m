@@ -289,12 +289,12 @@
     
 }
 
-
-
-#pragma mark - Private Method
+#pragma mark - Public Method
 - (void)reloadData{
     [self.collectionView reloadData];
 }
+
+#pragma mark - Private Method
 
 - (void)hideMenu
 {
