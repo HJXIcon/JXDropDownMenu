@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "JXDropDownMenu"
-s.version      = "1.0.1"
+s.version      = "1.0.2"
 s.summary      = "下拉菜单，封装简单"
 
 s.homepage     = "https://github.com/HJXIcon/JXDropDownMenu"

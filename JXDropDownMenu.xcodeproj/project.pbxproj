@@ -19,6 +19,7 @@
 		82BD4B4B1FA08AF9007003AC /* 桌面4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82BD4B4A1FA08AF9007003AC /* 桌面4.jpg */; };
 		82BD4B4D1FA09C90007003AC /* JXMenu.gif in Resources */ = {isa = PBXBuildFile; fileRef = 82BD4B4C1FA09C90007003AC /* JXMenu.gif */; };
 		82BD4B721FA0A0C9007003AC /* picture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82BD4B711FA0A0C9007003AC /* picture.bundle */; };
+		82BD4B751FA18031007003AC /* JXDropDownIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BD4B741FA18031007003AC /* JXDropDownIndexPath.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		82BD4B4A1FA08AF9007003AC /* 桌面4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "桌面4.jpg"; sourceTree = "<group>"; };
 		82BD4B4C1FA09C90007003AC /* JXMenu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = JXMenu.gif; sourceTree = "<group>"; };
 		82BD4B711FA0A0C9007003AC /* picture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = picture.bundle; sourceTree = "<group>"; };
+		82BD4B731FA18031007003AC /* JXDropDownIndexPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXDropDownIndexPath.h; sourceTree = "<group>"; };
+		82BD4B741FA18031007003AC /* JXDropDownIndexPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXDropDownIndexPath.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				82BD4AFC1F9DDF1A007003AC /* JXDropDownMenu.m */,
 				82BD4B081F9DFE98007003AC /* JXDropDownCell.h */,
 				82BD4B091F9DFE98007003AC /* JXDropDownCell.m */,
+				82BD4B731FA18031007003AC /* JXDropDownIndexPath.h */,
+				82BD4B741FA18031007003AC /* JXDropDownIndexPath.m */,
 				82BD4B471FA03F05007003AC /* UIView+Extension.h */,
 				82BD4B481FA03F05007003AC /* UIView+Extension.m */,
 				82BD4B711FA0A0C9007003AC /* picture.bundle */,
@@ -191,6 +196,7 @@
 				82BD4AE51F9DDED4007003AC /* main.m in Sources */,
 				82BD4B0A1F9DFE98007003AC /* JXDropDownCell.m in Sources */,
 				82BD4AFD1F9DDF1A007003AC /* JXDropDownMenu.m in Sources */,
+				82BD4B751FA18031007003AC /* JXDropDownIndexPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

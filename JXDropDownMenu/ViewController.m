@@ -53,9 +53,9 @@
 /**
  *  返回 menu 第column列 每行title
  */
-- (NSString *)menu:(JXDropDownMenu *)menu titleForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (NSString *)menu:(JXDropDownMenu *)menu titleForItemAtIndexPath:(JXDropDownIndexPath *)indexPath{
     
-    return  titles[indexPath.section][indexPath.row];
+    return  titles[indexPath.column][indexPath.item];
 }
 
 /**
@@ -70,5 +70,10 @@
     
 }
 
+
+- (void)menu:(JXDropDownMenu *)menu didSelectItemAtIndexPath:(JXDropDownIndexPath *)indexPath{
+    
+    NSLog(@"col == %ld, item == %ld",indexPath.column,indexPath.item);
+}
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JXDropDownIndexPath.h"
 
 @class JXDropDownMenu;
 
@@ -23,7 +23,7 @@
 /**
  *  返回 menu 第column列 每个Items的title
  */
-- (NSString *)menu:(JXDropDownMenu *)menu titleForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)menu:(JXDropDownMenu *)menu titleForItemAtIndexPath:(JXDropDownIndexPath *)indexPath;
 
 @optional
 /**
@@ -40,16 +40,8 @@
 #pragma mark - delegate
 @protocol JXDropDownMenuDelegate <NSObject>
 @optional
-/**
- *  点击代理，点击了第column 第Item 或者Item项，如果 Item >=0
- */
-- (void)menu:(JXDropDownMenu *)menu didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
-/** 新增
- *  return nil if you don't want to user select specified indexpath
- *  optional
- */
-- (NSIndexPath *)menu:(JXDropDownMenu *)menu willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)menu:(JXDropDownMenu *)menu didSelectItemAtIndexPath:(JXDropDownIndexPath *)indexPath;
 
 @end
 

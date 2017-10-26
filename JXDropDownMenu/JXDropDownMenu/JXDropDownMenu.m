@@ -192,7 +192,7 @@
                 model.isSelect = j == 0 ? YES : NO;
                 model.textNormalColor = self.textNormalColor;
                 model.textSelectedColor = self.textSelectedColor;
-                model.text = [_dataSource menu:self titleForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:i]];
+                model.text = [_dataSource menu:self titleForItemAtIndexPath:[JXDropDownIndexPath indexPathWithCol:i item:j]];
                 [tmpArray addObject:model];
             }
             [self.models addObject:tmpArray];
@@ -509,6 +509,7 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -534,7 +535,11 @@
     // 刷新
     [self reloadData];
    
+    if (_delegate && [_delegate respondsToSelector:@selector(menu:didSelectItemAtIndexPath:)]) {
+        [_delegate menu:self didSelectItemAtIndexPath:[JXDropDownIndexPath indexPathWithCol:_currentSelectedMenudIndex item:indexPath.item]];
+    }
 }
+
 
 
 
