@@ -12,6 +12,9 @@
 #define titles @[@[@"所有类别",@"地锅",@"牙刷",@"餐具",@"男表",@"笔记本",@"单肩斜挎包",@"美容养颜",@"毛呢大衣",@"增强免疫"],@[@"所有品牌",@"belle Maison",@"Bioglan",@"Boon",@"Aptamil",@"Betsey Johnson",@"Black&Decker",@"Calvin Klein",@"Frye",@"Kate Spade New York",@"KIRKLAND SIGNATURE",@"Okamoto",@"Timex"],@[@"综合排序",@"价格由高到底",@"价格由低到高"]]
 @interface ViewController ()<JXDropDownMenuDataSource,JXDropDownMenuDelegate>
 
+@property (nonatomic, weak) JXDropDownMenu *menu;
+
+@property (nonatomic, strong) NSArray *menuTitles;
 @end
 
 @implementation ViewController
@@ -20,6 +23,7 @@
     [super viewDidLoad];
  
     JXDropDownMenu *menu = [[JXDropDownMenu alloc]initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.frame), 44)];
+    _menu = menu;
     menu.dataSource = self;
     menu.delegate = self;
 //    menu.showSeparator = NO;
@@ -32,6 +36,13 @@
 //    menu.separatorColor = [UIColor redColor];
 //    menu.selectImage = [UIImage imageNamed:@"桌面4.jpg"];
     [self.view addSubview:menu];
+    
+    
+    /// 模拟网络加载
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.menuTitles = titles;
+        [_menu reloadData];
+    });
 }
 
 
@@ -39,14 +50,14 @@
  *  返回 menu 有多少列 ，默认1列
  */
 - (NSInteger)numberOfColumnsInMenu:(JXDropDownMenu *)menu{
-    return titles.count;
+    return self.menuTitles.count;
 }
 
 /**
  *  返回 menu 第column列有Items行
  */
 - (NSInteger)menu:(JXDropDownMenu *)menu numberOfItemsInColumn:(NSInteger)column{
-    NSArray *array = titles[column];
+    NSArray *array = self.menuTitles[column];
     return array.count;
 }
 
@@ -55,7 +66,7 @@
  */
 - (NSString *)menu:(JXDropDownMenu *)menu titleForItemAtIndexPath:(JXDropDownIndexPath *)indexPath{
     
-    return  titles[indexPath.column][indexPath.item];
+    return  self.menuTitles[indexPath.column][indexPath.item];
 }
 
 /**
@@ -63,7 +74,7 @@
  */
 - (NSInteger)menu:(JXDropDownMenu *)menu columnsInColumns:(NSInteger)column{
     
-    if (column == titles.count - 1) {
+    if (column == self.menuTitles.count - 1) {
         return 1;
     }
     return 2;

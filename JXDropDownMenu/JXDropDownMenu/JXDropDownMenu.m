@@ -158,10 +158,15 @@
     
 }
 
-
-#pragma mark - 即将要添加到父控件
+#pragma mark - Override Method
+/// 即将要添加到父控件
 - (void)willMoveToSuperview:(UIView *)newSuperview{
     [super willMoveToSuperview:newSuperview];
+    [self layoutMenu];
+    
+}
+
+- (void)layoutMenu{
     
     // 列
     if ([_dataSource respondsToSelector:@selector(numberOfColumnsInMenu:)]) {
@@ -210,7 +215,7 @@
         CALayer *bgLayer = [CALayer layer];
         bgLayer.frame = CGRectMake(i*bgLayerW, 0, bgLayerW, self.frame.size.height - 1);
         bgLayer.backgroundColor = [UIColor whiteColor].CGColor;
-
+        
         [self.layer addSublayer:bgLayer];
         [self.bgLayers addObject:bgLayer];
         
@@ -250,7 +255,7 @@
         }
         
     }
-    
+
 }
 
 
@@ -280,7 +285,7 @@
         
     } else {
         _currentSelectedMenudIndex = tapIndex;
-        [self reloadData];
+        [self.collectionView reloadData];
     
         [self animateIdicator:_indicators[tapIndex] background:self.backgroundView collectionView:self.collectionView title:_titles[tapIndex] forward:YES complecte:^{
             self.show = YES;
@@ -291,7 +296,7 @@
 
 #pragma mark - Public Method
 - (void)reloadData{
-    [self.collectionView reloadData];
+    [self layoutMenu];
 }
 
 #pragma mark - Private Method
@@ -533,7 +538,7 @@
     }];
     
     // 刷新
-    [self reloadData];
+    [self.collectionView reloadData];
    
     if (_delegate && [_delegate respondsToSelector:@selector(menu:didSelectItemAtIndexPath:)]) {
         [_delegate menu:self didSelectItemAtIndexPath:[JXDropDownIndexPath indexPathWithCol:_currentSelectedMenudIndex item:indexPath.item]];
