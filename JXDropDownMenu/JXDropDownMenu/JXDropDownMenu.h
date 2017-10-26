@@ -66,7 +66,6 @@
 @property (nonatomic, strong) UIColor *separatorColor;      // 分割线颜色
 @property (nonatomic, assign) CGFloat separatorHeighPercent;// 分割线高度占比，默认 50%，值范围为 0-1 (在设置dataSource之前调用才会生效)
 
-
 @property (nonatomic, weak) id<JXDropDownMenuDataSource> dataSource;
 @property (nonatomic, weak) id<JXDropDownMenuDelegate> delegate;
 

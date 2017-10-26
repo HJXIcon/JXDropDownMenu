@@ -125,7 +125,6 @@
 #pragma mark - init
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        [self setupUI];
         [self initialize];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(menuTap:)];
         [self addGestureRecognizer:tap];
@@ -134,12 +133,6 @@
     return self;
 }
 
-
-- (void)setupUI{
-    
-    
-    [self addSubview:self.bottomLineView];
-}
 
 
 - (void)initialize{
@@ -205,9 +198,6 @@
     }
     
     
-    [self.titles makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-    [self.bgLayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-    
     CGFloat bgLayerW = CGRectGetWidth(self.frame) / _numOfMenu;
     
     for (int i = 0; i < self.numOfMenu; i ++) {
@@ -254,6 +244,9 @@
             [bgLayer addSublayer:separator];
         }
         
+        // 底部分割线
+        [self addSubview:self.bottomLineView];
+        
     }
 
 }
@@ -296,6 +289,14 @@
 
 #pragma mark - Public Method
 - (void)reloadData{
+    [self.bottomLineView removeFromSuperview];
+    [self.bgLayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [self.models removeAllObjects];
+    [self.colNumInCols removeAllObjects];
+    [self.titles removeAllObjects];
+    [self.bgLayers removeAllObjects];
+    [self.indicators removeAllObjects];
+    
     [self layoutMenu];
 }
 
@@ -320,7 +321,7 @@
 }
 
 
-/// 底线
+/// 中间分割线
 - (CAShapeLayer *)createSeparatorLineWithColor:(UIColor *)color andPosition:(CGPoint)point {
     CAShapeLayer *layer = [CAShapeLayer new];
     
